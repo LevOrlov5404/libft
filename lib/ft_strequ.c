@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 19:11:12 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/07 19:11:14 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/11 22:28:14 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/11 22:28:15 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
 #include "libft.h"
 
-int main()
+int		ft_strequ(char const *s1, char const *s2)
 {
-	//int		i;
-	int		c;
-	char	str[] = "aaaaBaaaa";
-	char	*s;
+	int i;
 
-	s = memchr(str, (int)'B', 5);
-	/*if (!s)
-		printf("null\n");
-	else*/
-	printf("%c\n", *s);
-	return (0);
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

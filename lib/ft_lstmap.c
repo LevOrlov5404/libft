@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/18 19:33:00 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/18 19:33:16 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_list	*ft_lstmap(t_list *lst, t_list
+*(*f)(t_list *elem))
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	t_list	*c;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
+	c = 0;
+	lst = 0;
+	if (f)
+		c = 0;
+	return (c);
 }

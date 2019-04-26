@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/12 18:20:40 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/12 18:20:41 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	**ft_strsplit(char const *s, char c)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	int		i;
+	int		ai;
+	char	**a;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
+	if (s == 0 || !(a = ft_massiv_alloc((char*)s, c)))
+		return (0);
 	i = 0;
-	while (i < n)
+	ai = 0;
+	while (s[i] != '\0')
 	{
-		d[i] = s[i];
-		i++;
+		if ((i == 0 && s[i] != c) || (s[i] != c && s[i - 1] == c))
+		{
+			a[ai] = ft_str_fill_in_split((char*)s, &i, c);
+			if (!a[ai])
+			{
+				ft_delite(&a, ai);
+				return (0);
+			}
+			ai++;
+		}
+		else
+			i++;
 	}
-	return (dst);
+	a[ai] = 0;
+	return (a);
 }

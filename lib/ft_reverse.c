@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/26 20:55:09 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/26 20:56:01 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_reverse(char *s, int len)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	int		i;
+	int		j;
+	char	c;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
 	i = 0;
-	while (i < n)
+	j = ft_strlen(s) - 1;
+	while (i < (len + 1) / 2)
 	{
-		d[i] = s[i];
+		c = s[i];
+		s[i] = s[j];
+		s[j] = c;
 		i++;
+		j--;
 	}
-	return (dst);
 }

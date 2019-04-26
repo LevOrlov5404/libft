@@ -12,22 +12,25 @@
 
 NAME = libft.a
 
-SRC = *.c
+SRC = *.c          #все прописать полностью
+
+OBJ = $(SRC:.c=.o)
 
 INCLUDES = ./
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME):
-	@gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRC)
+$(NAME): $(OBJ) 
 	@ar rc $(NAME) *.o
 	@ranlib $(NAME)
+
+$(OBJ) : $(SRC) libft.h
+	@gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRC)
 
 clean:
 	@/bin/rm -f *.o
 
-fclean:
+fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
-

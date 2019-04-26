@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/26 20:43:46 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/26 20:44:13 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strlowcase(char *str)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	char *str2;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	i = 0;
-	while (i < n)
+	str2 = str;
+	while (*str2 != 0)
 	{
-		d[i] = s[i];
-		i++;
+		if (*str2 >= 65 && *str2 <= 90)
+			*str2 += ' ';
+		str2++;
 	}
-	return (dst);
+	return (str);
 }

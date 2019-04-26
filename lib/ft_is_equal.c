@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_is_equal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/26 21:07:32 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/26 21:08:01 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_is_equal(char *s1, char *s2)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	int i;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
 	i = 0;
-	while (i < n)
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		d[i] = s[i];
+		if (s1[i] != s2[i])
+			return (0);
 		i++;
 	}
-	return (dst);
+	return (1);
 }

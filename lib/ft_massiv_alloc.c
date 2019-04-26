@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_massiv_alloc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/26 21:09:59 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/26 21:10:41 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	**ft_massiv_alloc(char *s, char c)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	int		i;
+	int		len;
+	char	**a;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
 	i = 0;
-	while (i < n)
+	len = 0;
+	if (s[i] != c)
+		len++;
+	i++;
+	while (s[i] != '\0')
 	{
-		d[i] = s[i];
+		if (s[i] != c && s[i - 1] == c)
+			len++;
 		i++;
 	}
-	return (dst);
+	a = (char**)malloc(sizeof(char*) * (len + 1));
+	return (a);
 }

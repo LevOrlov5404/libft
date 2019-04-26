@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/11 20:55:54 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/11 20:55:56 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	size_t	i;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
+	if (!*needle)
+		return ((char*)haystack);
 	i = 0;
-	while (i < n)
+	while (i < len && haystack[i] != '\0')
 	{
-		d[i] = s[i];
+		if (haystack[i] == *needle && ft_is_equal_n((char*)haystack + i,
+				(char*)needle, i, len))
+			return ((char*)haystack + i);
 		i++;
 	}
-	return (dst);
+	return (0);
 }

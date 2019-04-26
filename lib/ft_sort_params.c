@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/26 20:38:34 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/26 20:40:22 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_sort_params(char **str)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	char **p;
+	char **c;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	i = 0;
-	while (i < n)
+	p = str;
+	c = str;
+	while (*(p + 1) != '\0')
 	{
-		d[i] = s[i];
-		i++;
+		if (ft_strcmp(*p, *(p + 1)) > 0)
+		{
+			*c = *p;
+			*p = *(p + 1);
+			*(p + 1) = *c;
+			p = str;
+		}
+		p++;
 	}
-	return (dst);
 }

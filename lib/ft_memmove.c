@@ -18,39 +18,21 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*s;
 	size_t			i;
 
+	if (dst == src)
+		return (dst);
 	d = (unsigned char*)dst;
 	s = (unsigned char*)src;
-	i = 0;
-	while (i < len && s[i])
+	if (s < d && d < s + len)
 	{
-		d[i] = s[i];
-		i++;
-	}
-	if (!s[i] && i < len)
-	{
-
-		while (d[i] && i < len)
+		i = len - 1;
+		while (i != 0)
 		{
-			d[i] = '\0';
-			i++;
+			d[i] = s[i];
+			i--;
 		}
+		d[i] = s[i];
 	}
+	else
+		ft_memcpy(d, s, len);
 	return (dst);
 }
-
-/*int main()
-{
-	char s1[] = "aloha";
-	char s2[] = "aaaaaaaaa";
-	int i;
-
-	ft_memmove(s2, s1, 11);
-	printf("%s\n", s2);
-	i = 0;
-	while (i < 9)
-	{
-		printf("%c", s2[i]);
-		i++;
-	}
-	return (0);
-}*/

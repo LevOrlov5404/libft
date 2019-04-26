@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/12 16:40:07 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/12 16:40:10 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	char	*s_after;
+	size_t	i;
+	size_t	j;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
+	if (!s1 || !s2 || !(s_after = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (0);
 	i = 0;
-	while (i < n)
+	j = 0;
+	while (s1[j] != '\0')
 	{
-		d[i] = s[i];
+		s_after[i] = s1[j];
 		i++;
+		j++;
 	}
-	return (dst);
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		s_after[i] = s2[j];
+		i++;
+		j++;
+	}
+	s_after[i] = '\0';
+	return (s_after);
 }

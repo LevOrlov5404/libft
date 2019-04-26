@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnita <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 18:08:00 by pnita             #+#    #+#             */
-/*   Updated: 2019/04/05 18:08:02 by pnita            ###   ########.fr       */
+/*   Created: 2019/04/11 16:58:45 by pnita             #+#    #+#             */
+/*   Updated: 2019/04/11 16:58:48 by pnita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	char	*z1;
+	char	*z2;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	i = 0;
-	while (i < n)
+	z1 = s1;
+	while (*z1 != '\0')
+		z1++;
+	z2 = (char*)s2;
+	while (*z2 != '\0')
 	{
-		d[i] = s[i];
-		i++;
+		*z1 = *z2;
+		z1++;
+		z2++;
 	}
-	return (dst);
+	*z1 = '\0';
+	return (s1);
 }
